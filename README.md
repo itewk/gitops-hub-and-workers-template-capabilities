@@ -1,2 +1,2 @@
-# gitops hub and workers template: capabilities
+# capabilities (gitops hub and workers template)
 TODO
