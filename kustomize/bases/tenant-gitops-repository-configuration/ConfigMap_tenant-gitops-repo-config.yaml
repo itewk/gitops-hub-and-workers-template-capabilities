@@ -5,6 +5,6 @@ metadata:
   name: tenant-gitops-repo-config
 data:
   # TODO
-  gitopsRepository: https://github.com/itewk/tenants-gitops-hub-and-spoke-template.git
+  gitopsRepository: https://github.com/itewk/gitops-hub-and-workers-template-tenants.git
   gitopsRevision: main
 immutable: false

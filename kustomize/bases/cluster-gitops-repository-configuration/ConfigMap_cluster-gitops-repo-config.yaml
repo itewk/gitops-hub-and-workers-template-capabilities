@@ -5,7 +5,7 @@ metadata:
   name: cluster-gitops-repo-config
 data:
   # TODO
-  gitopsRepository: https://github.com/itewk/gitops-hub-and-spoke-template.git
+  gitopsRepository: https://github.com/itewk/gitops-hub-and-workers-template-platform-management.git
   gitopsRevision: main
   #gitopsCluster: 
 immutable: false
