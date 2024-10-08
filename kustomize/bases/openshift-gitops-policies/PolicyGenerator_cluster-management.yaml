@@ -17,6 +17,9 @@ policyDefaults:
   complianceType: musthave
   severity: critical
   informGatekeeperPolicies: false
+  evaluationInterval:
+    compliant: 10s
+    noncompliant: 10s
 
 policySetDefaults:
   generatePolicySetPlacement: true
