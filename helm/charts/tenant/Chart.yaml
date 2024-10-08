@@ -1,0 +1,7 @@
+apiVersion: v2
+name: tenant
+description: TODO
+
+type: application
+
+version: 1.0.0
