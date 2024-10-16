@@ -8,7 +8,7 @@ placementBindingDefaults:
   name: cluster-management
 
 policyDefaults:
-  namespace: openshift-gitops-policies
+  namespace: acm-policies-openshift-gitops
   consolidateManifests: true
   orderManifests: false
   orderPolicies: true
