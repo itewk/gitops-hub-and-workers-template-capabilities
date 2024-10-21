@@ -49,13 +49,13 @@ policies:
   manifests:
   - path: policy-manifests/cluster-management/validate-cluster-gitops
 
-- name: deploy-cluster-management-apps
-  description: Deploy cluster management ArgoCD Applications
+- name: deploy-cluster-mgt-root-app
+  description: Deploy cluster management root ArgoCD Application
   policySets:
   - cluster-management
   remediationAction: enforce
   manifests:
-  - path: policy-manifests/cluster-management/deploy-cluster-management-applications
+  - path: policy-manifests/cluster-management/deploy-cluster-management-root-application
 
 - name: validate-cluster-management-apps
   description: Validate cluster management ArgoCD Applications are healthy and synced
