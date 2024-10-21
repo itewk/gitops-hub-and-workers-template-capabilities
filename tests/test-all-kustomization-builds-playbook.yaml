@@ -12,7 +12,7 @@
       read_whole_file: true
       recurse: yes
     register: kustomization_files
-  
+
   - name: Get kustomization directories to test
     ansible.builtin.set_fact:
       kustomization_directories: "{{ kustomization_files.files | map(attribute='path') | map('dirname') | list }}"
