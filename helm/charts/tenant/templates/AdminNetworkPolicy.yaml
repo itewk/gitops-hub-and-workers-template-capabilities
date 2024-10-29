@@ -1,0 +1,17 @@
+apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: {{ $.Values.tenantName }}
+spec:
+  priority: 50 
+  subject:
+    namespaces:
+      matchLabels:
+        jpmc.com/tenant: '{{ $.Values.tenantName }}'
+  ingress: 
+  - name: 'pass-all-tenant-ingress-{{ $.Values.tenantName }}'
+    action: 'Pass'
+    from:
+    - namespaces:
+        matchLabels:
+          jpmc.com/tenant: '{{ $.Values.tenantName }}'

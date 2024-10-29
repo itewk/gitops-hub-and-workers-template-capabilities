@@ -1,0 +1,13 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: metal3-admin
+rules:
+- verbs:
+  - "*"
+  apiGroups:
+  - baremetalhosts.metal3.io
+  resources:
+  - '*'
+  

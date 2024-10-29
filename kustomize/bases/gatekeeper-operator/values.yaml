@@ -10,5 +10,5 @@ operators:
   name: gatekeeper-operator-product
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  csv: gatekeeper-operator-product.v3.15.1-0.1725401534.p
+  csv: gatekeeper-operator-product.v3.15.1-0.1727189912.p
   namespace: gatekeeper-operator

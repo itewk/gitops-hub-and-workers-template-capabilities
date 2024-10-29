@@ -1,4 +1,4 @@
-# capabilities (gitops hub and workers template)
+# Cluster Capabilities Library
 TODO
 
 ## Testing
@@ -11,7 +11,7 @@ Recommended way of running tests.
 
 #### run
 ```bash
-ansible-navigator --eei ee-kube-hub-init-tools:latest run tests/test-all-kustomization-builds-playbook.yaml -m stdout
+ansible-navigator --eei quay.io/itewk/ee-kube-hub-init-tools:latest run tests/test-all-kustomization-builds-playbook.yaml -m stdout
 ```
 
 ### Option 2: ansible-playbook

@@ -1,2 +1,4 @@
-ansible-navigator.log
+kustomize/**/charts/*
 tests/*.json
+*.log
+helm/charts/**/charts/*

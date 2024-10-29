@@ -9,7 +9,7 @@ spec:
   resourceTrackingMethod: annotation+label
 
   # set so that PolicyGenerator kustomize plugin can be used
-  kustomizeBuildOptions: --enable-alpha-plugins --load-restrictor LoadRestrictionsNone --helm-command /usr/local/bin/helm
+  kustomizeBuildOptions: --enable-helm --helm-command /usr/local/bin/helm --enable-alpha-plugins --load-restrictor LoadRestrictionsNone
 
   extraConfig:
     resource.compareoptions: |
@@ -69,6 +69,11 @@ spec:
           memory: 128Mi
     provider: dex
   applicationSet:
+    env:
+    - name: ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_NEW_GIT_FILE_GLOBBING
+      value: 'true'
+    extraCommandArgs:
+    - --enable-new-git-file-globbing
     resources:
       limits:
         cpu: '2'
@@ -85,7 +90,7 @@ spec:
     defaultPolicy: ''
     policy: |
       g, system:cluster-admins, role:admin
-      g, cluster-admins, role:admin
+      g, cluster-administrators, role:admin
     scopes: '[groups]'
   repo:
     volumes:

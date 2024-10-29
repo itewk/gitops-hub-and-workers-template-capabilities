@@ -1,0 +1,10 @@
+apiVersion: k8s.ovn.org/v1
+kind: EgressIP
+metadata:
+  name: '{{ $.Values.tenantName }}-egressip'
+spec:
+  egressIPs:
+    - '{{ $.Values.tenantEgressIp }}'
+  namespaceSelector:
+    matchLabels:
+      jpmc.com/tenant: '{{ $.Values.tenantName }}'

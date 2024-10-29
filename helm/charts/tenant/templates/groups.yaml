@@ -1,0 +1,14 @@
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: '{{ $.Values.tenantName }}-admin'
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: '{{ $.Values.tenantName }}-dev'
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: '{{ $.Values.tenantName }}-view'

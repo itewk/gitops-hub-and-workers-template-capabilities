@@ -1,0 +1,8 @@
+---
+apiVersion: v2
+name: tenant
+description: Defines the creation of a VPC
+
+type: application
+
+version: 0.1.0

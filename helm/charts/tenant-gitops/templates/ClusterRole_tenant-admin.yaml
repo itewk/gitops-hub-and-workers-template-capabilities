@@ -1,0 +1,27 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tenant-admin
+rules:
+# To create the admin policy
+- verbs:
+  - "*"
+  apiGroups:
+  - policy.networking.k8s.io
+  resources:
+  - adminnetworkpolicies
+# To create cluster resource quota
+- verbs:
+  - "*"
+  apiGroups:
+  - quota.openshift.io
+  resources:
+  - clusterresourcequotas
+# To create egressIP
+- verbs:
+  - "*"
+  apiGroups:
+  - k8s.ovn.org
+  resources:
+  - egressips

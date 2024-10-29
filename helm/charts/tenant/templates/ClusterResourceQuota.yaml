@@ -1,0 +1,13 @@
+apiVersion: quota.openshift.io/v1
+kind: ClusterResourceQuota
+metadata:
+  name: '{{ $.Values.tenantName }}'
+spec:
+  quota: 
+    hard:
+      pods: '10'
+      secrets: '20'
+  selector:
+    labels:
+      matchLabels:
+        jpmc.com/tenant: '{{ $.Values.tenantName }}'

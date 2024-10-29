@@ -36,4 +36,4 @@ policies:
 
 policySets:
 - name: tenant-management
-  description: Tenant management policies related to deploying, configuring, and monitoring tenant gitops components
+  description: tenant management policies related to deploying, configuring, and monitoring tenant gitops components

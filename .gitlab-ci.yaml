@@ -1,0 +1,44 @@
+default:
+  image: alpine/k8s:1.28.14
+
+stages:
+- upload
+
+application-set:
+  stage: upload
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    changes:
+    - helm/charts/application-set/Chart.yaml
+  before_script:
+  - 'export HOME=/tmp'
+  - 'helm repo add --username gitlab-ci-token --password ${CI_JOB_TOKEN} ${CI_PROJECT_NAME} ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
+  - 'helm plugin install https://github.com/chartmuseum/helm-push.git'
+  script:
+  - 'helm cm-push helm/charts/application-set/ ${CI_PROJECT_NAME}'
+
+tenant:
+  stage: upload
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    changes:
+    - helm/charts/tenant/Chart.yaml
+  before_script:
+  - 'export HOME=/tmp'
+  - 'helm repo add --username gitlab-ci-token --password ${CI_JOB_TOKEN} ${CI_PROJECT_NAME} ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
+  - 'helm plugin install https://github.com/chartmuseum/helm-push.git'
+  script:
+  - 'helm cm-push helm/charts/tenant/ ${CI_PROJECT_NAME}'
+
+tenant-gitops:
+  stage: upload
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    changes:
+    - helm/charts/tenant-gitops/Chart.yaml
+  before_script:
+  - 'export HOME=/tmp'
+  - 'helm repo add --username gitlab-ci-token --password ${CI_JOB_TOKEN} ${CI_PROJECT_NAME} ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/stable'
+  - 'helm plugin install https://github.com/chartmuseum/helm-push.git'
+  script:
+  - 'helm cm-push helm/charts/tenant-gitops/ ${CI_PROJECT_NAME}'

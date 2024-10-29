@@ -1,0 +1,10 @@
+tenantGitOpsNamespace: tenant-gitops
+
+tenantName: 
+
+tenantEgressIp: 
+
+tenantWorkloads:
+  gitRepo: 
+  gitRevision: 
+  path: 

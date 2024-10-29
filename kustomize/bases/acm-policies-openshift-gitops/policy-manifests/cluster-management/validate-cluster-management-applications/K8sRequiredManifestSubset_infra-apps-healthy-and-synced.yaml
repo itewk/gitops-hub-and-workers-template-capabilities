@@ -23,7 +23,7 @@ spec:
       - key: app.kubernetes.io/name
         operator: NotIn
         values:
-        - acm-policies
+        - acm-policies-openshift-gitops
   parameters:
     manifest_subset:
       status:

@@ -1,0 +1,41 @@
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: {{ $.Values.tenantName }}
+  namespace: {{ $.Values.tenantGitOpsNamespace }}
+spec:
+  # allow for VPC to pull from any source repo
+  #
+  # NOTE: may want to customize this to only allow from certain internal Git instances
+  sourceRepos:
+  - '*'
+
+  destinations:
+  # allow VPCs to manage namespaces that start with the VPC name
+  - namespace: '{{ $.Values.tenantName }}-*'
+    server: https://kubernetes.default.svc
+
+  # ideally this would be a VPC specific namespace but...
+  # Due to the way that ApplicationSets in different namespaces is implemented there is no good way to do that dynamically
+  # since you have to update a single list, therefor...
+  # The ApplicationSet for a VPCs workloads needs to live in the namespace that the VPC ArgoCd instance is running in, and..
+  # There is no way to have an ApplicationSet generate Applications in a different namespace then what it is in, therefor...
+  # The VPC AppProject needs to be able to load Applications from the namespace that the VPC ArgoCD instance is running in, which...
+  # stinks, but can't find another solution...
+  - namespace: {{ $.Values.tenantGitOpsNamespace }}
+    server: https://kubernetes.default.svc
+
+  sourceNamespaces:
+  # ideally this would be a VPC specific namespace but...
+  # Due to the way that ApplicationSets in different namespaces is implemented there is no good way to do that dynamically
+  # since you have to update a single list, therefor...
+  # The ApplicationSet for a VPCs workloads needs to live in the namespace that the VPC ArgoCd instance is running in, and..
+  # There is no way to have an ApplicationSet generate Applications in a different namespace then what it is in, therefor...
+  # The VPC AppProject needs to be able to load Applications from the namespace that the VPC ArgoCD instance is running in, which...
+  # stinks, but can't find another solution...
+  - {{ $.Values.tenantGitOpsNamespace }}
+  
+  # VPCs can only create Namespaces at the global level
+  clusterResourceWhitelist:
+  - group: ""
+    kind: Namespace
